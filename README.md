@@ -1,47 +1,69 @@
 # CurrencyConversor
 
-Conversor de moedas simples em Java, utilizando consumo de API para obter taxas de câmbio em tempo real. O projeto é construído com Maven, configurado para Java 17, e inclui testes unitários para garantir a qualidade do serviço de conversão.
+Conversor de moedas em Java que utiliza uma API externa para obter taxas de câmbio em tempo real. O projeto é estruturado com Maven e inclui testes automatizados.
+
+## Estrutura do Código
+
+O projeto segue uma estrutura modular, separando responsabilidades em diferentes pacotes:
+
+```
+src/
+ ├── api/           # Comunicação com APIs externas (ex: APIClient.java)
+ ├── model/         # Modelos de domínio (ex: Conversao.java, Moeda.java)
+ ├── service/       # Lógica de negócio (ex: ConversorService.java)
+ ├── utils/         # Utilitários e helpers (ex: Formatter.java)
+ ├── Main.java      # Classe principal (ponto de entrada CLI)
+ └── test/          # Testes automatizados (ex: ConversorServiceTest.java)
+```
+
+- **api/**: Responsável por consumir APIs externas de câmbio.
+- **model/**: Contém as classes que representam os dados do domínio.
+- **service/**: Implementa a lógica de conversão de moedas.
+- **utils/**: Funções utilitárias para formatação e outras operações auxiliares.
+- **Main.java**: Interface de linha de comando para interação com o usuário.
+- **test/**: Testes unitários utilizando JUnit e Mockito.
 
 ## Funcionalidades
 
--   Conversão entre diferentes moedas utilizando taxas atualizadas.
--   Consumo da API [ExchangeRate-API](https://www.exchangerate-api.com/) para buscar as taxas.
--   Interface de linha de comando (CLI) interativa e amigável.
--   Validação de entrada robusta para códigos de moeda (formato de 3 letras maiúsculas) e valor a ser convertido (não negativo).
--   Tratamento de erros aprimorado utilizando `Optional` para lidar com falhas na API, moedas não encontradas ou dados inválidos.
--   Formatação de saída dos valores monetários para o padrão brasileiro (ex: 1.234,56).
--   Testes unitários abrangentes com JUnit 5 e Mockito para o serviço de conversão.
--   Configurado para compilar e rodar com Java 17 (ou superior).
+- Conversão entre moedas com taxas atualizadas via [ExchangeRate-API](https://www.exchangerate-api.com/).
+- Interface de linha de comando (CLI) interativa.
+- Validação de códigos de moeda (3 letras maiúsculas) e valores não negativos.
+- Tratamento robusto de erros e mensagens informativas.
+- Saída formatada no padrão brasileiro.
+- Testes unitários com JUnit 5 e Mockito.
 
 ## Pré-requisitos
 
--   Java 17 ou superior (o projeto está configurado para Java 17 no `pom.xml`).
--   Maven instalado e configurado no PATH do sistema.
+- Java 17 ou superior.
+- Maven instalado e configurado no PATH.
 
-## Como executar
+## Instalação e Execução
 
-1.  **Clone o repositório ou baixe os arquivos do projeto.**
+1. **Clone o repositório ou baixe os arquivos do projeto.**
+2. **Acesse o diretório do projeto:**
+   ```sh
+   cd CurrencyConversor
+   ```
+3. **Compile o projeto:**
+   ```sh
+   mvn clean compile
+   ```
+4. **Execute os testes (opcional, mas recomendado):**
+   ```sh
+   mvn test
+   ```
+5. **Execute o programa:**
+   ```sh
+   mvn exec:java -Dexec.mainClass=Main
+   ```
+   > Caso o comando acima não funcione, verifique se o plugin `exec-maven-plugin` está configurado no `pom.xml` ou execute manualmente o JAR gerado.
 
-2.  **Navegue até o diretório raiz do projeto** (onde o arquivo `pom.xml` está localizado) pelo seu terminal.
+## Observações
 
-3.  **Compile o projeto com Maven:**
-    Este comando irá baixar as dependências e compilar o código-fonte.
+- É necessário conexão com a internet para obter as taxas de câmbio.
+- Utilize códigos de moeda válidos (ex: USD, BRL, EUR, JPY).
+- Mensagens de erro são exibidas no console para facilitar a depuração.
 
-4.  **Execute os testes unitários (recomendado):**
+## Licença
 
-5.  **Execute o programa principal:**
-    O `Main.java` está no pacote default.
-
-(Mensagens de erro específicas podem aparecer no console via System.err dependendo da natureza da falha no serviço ou API).
-
-
-Observações
-
--   •É necessário ter uma conexão ativa com a internet para que a API de taxas de câmbio funcione corretamente.
--   •Utilize códigos de moeda válidos e reconhecidos internacionalmente (ex: USD, BRL, EUR, JPY, GBP). A API pode não suportar todas as moedas existentes.
--   •O projeto utiliza System.err para logar mensagens de erro internas das classes APIClient e ConversorService, o que pode ser útil para depuração.
--
-- Licença
-- 
-- MIT   
-
+MIT License. Consulte o arquivo LICENSE para mais detalhes.
