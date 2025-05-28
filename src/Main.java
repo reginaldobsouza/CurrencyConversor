@@ -45,7 +45,7 @@ public class Main {
     private static String lerCodigoMoeda(Scanner scanner, String tipoMoeda) {
         String codigo;
         while (true) {
-            System.out.printf("Digite a moeda %s (ex: USD, BRL, EUR - 3 letras maiúsculas): ", tipoMoeda);
+            System.out.printf("Digite a moeda %s (ex: USD, BRL, EUR, ARS, COP - 3 letras maiúsculas): ", tipoMoeda);
             codigo = scanner.next().trim().toUpperCase();
             if (codigo.matches("^[A-Z]{3}$")) {
                 return codigo;
