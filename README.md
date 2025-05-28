@@ -32,6 +32,16 @@ src/
 - Saída formatada no padrão brasileiro.
 - Testes unitários com JUnit 5 e Mockito.
 
+## Moedas Suportadas
+
+- Real Brasileiro (BRL)
+- Dólar Americano (USD)
+- Euro (EUR)
+- Peso Argentino (ARS)
+- Peso Colombiano (COP)
+
+> Outras moedas disponíveis na API também podem ser utilizadas, desde que o código de 3 letras seja válido.
+
 ## Pré-requisitos
 
 - Java 17 ou superior.
@@ -61,9 +71,10 @@ src/
 ## Observações
 
 - É necessário conexão com a internet para obter as taxas de câmbio.
-- Utilize códigos de moeda válidos (ex: USD, BRL, EUR, JPY).
+- Utilize códigos de moeda válidos (ex: USD, BRL, EUR, ARS, COP).
 - Mensagens de erro são exibidas no console para facilitar a depuração.
 
 ## Licença
 
 MIT License. Consulte o arquivo LICENSE para mais detalhes.
+
